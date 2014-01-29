@@ -1,0 +1,14 @@
+{
+  "name": "pastebin",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*",
+    "jsonfile": "~1.1.1",
+    "slug": "~0.4.0"
+  }
+}

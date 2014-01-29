@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  
+  button#newTournament Add Tournament
+  
+  ul
+    each item in tournaments
+      li 
+        a(href=item.slug) #{item.Tournament}
+  script(src="main.js")
+  
+  #popup
+    form(action="data.json" method="post")
+        p 
+          input(type="text", name="Tournament", placeholder="Tournament Name")
+        p 
+          textarea(name="players", rows=5, placeholder="Macho Man, Hulk Hogan")
+        p
+          input(type="submit", value="submit")
+        
+      
