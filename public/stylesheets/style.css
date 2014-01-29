@@ -9,3 +9,16 @@ a {
 #popup {
     display:none;
 }
+
+#next-game{
+    background-color: #f0ad4e;
+}
+#recent{
+    background-color: #e14f4f;
+}
+#upcoming{
+    background-color: #4cae4c;
+}
+#standings{
+    background-color: #39b3d7;
+}

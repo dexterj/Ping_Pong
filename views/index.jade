@@ -9,7 +9,7 @@ block content
   ul
     each item in tournaments
       li 
-        a(href=item.slug) #{item.Tournament}
+        a(href='tourney/'+item.slug) #{item.Tournament}
   script(src="main.js")
   
   #popup
