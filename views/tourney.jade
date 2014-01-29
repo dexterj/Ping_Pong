@@ -1,14 +1,16 @@
 extends layout
 
 block content
-  h1= Tournament
-  p Welcome to the #{Tournament}
-
-    #next-game
-        h2 Dexter vs The World
-    #recent
-        h3 Drew beats everyone
-    #upcoming
-        h3 Macho Man's revenge
-    #standings
-        h3 Standings
+    #container
+        h1= Tournament
+        p Welcome to the #{Tournament}
+        #wrapper1
+            #next-game
+                h2 Dexter vs The World
+            #recent
+                h3 Drew beats everyone
+            #upcoming
+                h3 Macho Man's revenge
+        #wrapper2
+            #standings
+                h3 Standings

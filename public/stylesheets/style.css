@@ -10,14 +10,33 @@ a {
     display:none;
 }
 
+#container{
+    width: 90%;
+    padding: 20px;
+}
+
+#wrapper1 {
+    width: 62%;
+    float: left;
+}
+
+#wrapper2 {
+    width: 38%;
+    float: left;
+}
+
 #next-game{
     background-color: #f0ad4e;
 }
 #recent{
     background-color: #e14f4f;
+    width: 50%;
+    float:left;
 }
 #upcoming{
     background-color: #4cae4c;
+    width: 50%;
+    float: left;
 }
 #standings{
     background-color: #39b3d7;
