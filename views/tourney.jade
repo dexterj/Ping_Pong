@@ -1,16 +1,50 @@
 extends layout
+mixin matchrow(playerone, playertwo)
+  tr
+    td: a #{playerone} VS #{playertwo}
+    td
 
 block content
-    #container
+    .container
         h1= Tournament
         p Welcome to the #{Tournament}
-        #wrapper1
-            #next-game
-                h2 Dexter vs The World
-            #recent
-                h3 Drew beats everyone
-            #upcoming
-                h3 Macho Man's revenge
-        #wrapper2
-            #standings
-                h3 Standings
+        .row
+          #matches.col-md-6
+              h2 Matches
+              table.table.table-striped
+                tr
+                  th Match
+                  th Score
+                +matchrow('Dexter','Thomas')
+                +matchrow('Andrea','James')
+                +matchrow('Drew','Mohammad')
+                +matchrow('Dexter','Thomas')
+                +matchrow('Andrea','James')
+                +matchrow('Drew','Mohammad')
+                
+          #standings.col-md-6
+              h2 Standings
+              table.table.table-striped
+                tr
+                  th #
+                  th Player
+                  th Games Won
+                  th Games Lost
+                  th Sets Won
+                  th Sets Lost
+                tr
+                  td 1
+                  td Dexter
+                  td 6
+                  td 2
+                  td 12
+                  td 0
+                tr
+                  td 1
+                  td Andrea
+                  td 6
+                  td 2
+                  td 11
+                  td 1
+                  
+                

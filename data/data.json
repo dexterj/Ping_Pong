@@ -1,7 +1,22 @@
 [
   {
     "Tournament": "DevIowa Open",
-    "players": "thor\r\nodin\r\n",
-    "slug": "DevIowa-Open"
+    "players": ["Thomas", "Dexter", "James", "Andrea", "Drew", "Mohammad"],
+    "slug": "DevIowa-Open",
+    "matches": [{
+        p1:"Thomas",
+        p2:"Dexter",
+        score{
+            p1:2,
+            p2:1,
+            sets:[
+                {p1:11,p2:5},
+                {p1:11,p2:5},
+                {p1:11,p2:5},
+            ]
+        },
+        winner:"Thomas",
+        looser:"Dexter"
+    }],
   }
 ]
