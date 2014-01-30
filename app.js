@@ -7,6 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+var models = require('./models');
 
 
 var app = express();
@@ -29,8 +30,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.post('/data.json', routes.data);
-app.get('/tourney/:tourney', routes.tourney);
+app.post('/api/tournament', routes.create_tournament);
+app.get('/api/tournament', routes.list_tournament);
+app.get('/api/tournament/:id', routes.get_tournament);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

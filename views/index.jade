@@ -7,13 +7,13 @@ block content
   button#newTournament Add Tournament
   
   ul
-    each item in tournaments
+    each item in tournamentlist
       li 
-        a(href='tourney/'+item.slug) #{item.Tournament}
+        a(href='tourney/'+item.slug) #{item.name}
   script(src="main.js")
   
   #popup
-    form(action="data.json" method="post")
+    form(action="/api/tournament" method="post")
         p 
           input(type="text", name="Tournament", placeholder="Tournament Name")
         p 
