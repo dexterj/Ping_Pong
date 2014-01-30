@@ -34,7 +34,6 @@ function parsePlayerList(textBoxString){
   for (var i=0; i<player_names.length; i++){
     var player = new models.Player();
     player.name = player_names[i];
-    console.log("CCCC", player_names[i], player);
     player.save()
     players.push(player);
   }
@@ -42,17 +41,37 @@ function parsePlayerList(textBoxString){
   return players; 
 };
 
+var makeMatches = function(players){
+  matches = [];
+  for(var i = 0; i < players.length; i++){
+    home_player = players[i];
+      for(var j = 0; j < players.length; j++){
+        away_player = players[j];
+        if (i == j) continue;
+        var m = new models.Match({"home":home_player.name, "away":away_player.name});
+        matches.push(m);
+      }
+  }
+    
+  return matches;
+}
+
 exports.create_tournament = function(req, res){
     var t = new models.Tournament ();
     t.name = req.body.Tournament;
     t.slug = slugger(t.name);
     t.players = parsePlayerList(req.body.players);
+    t.matches = makeMatches(t.players);
     t.save();    
     res.redirect('/');
 };
 
-exports.tourney = function(req, res){
-   var t = getTourneyBySlug(req.params.tourney);
-    res.render('tourney', t);
+exports.show_tournament = function(req, res){
+  whenFound = function (err, t){
+        console.log(t);
+        res.render('tourney', t);
+    };
+    // callback
+    models.Tournament.find({"slug": req.params.tourney}, whenFound);
 
 };

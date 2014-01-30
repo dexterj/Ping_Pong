@@ -7,7 +7,7 @@ mixin matchrow(playerone, playertwo)
 block content
     .container
         h1= Tournament
-        p Welcome to the #{Tournament}
+        p Welcome to the #{name}
         .row
           #matches.col-md-6
               h2 Matches
@@ -15,13 +15,8 @@ block content
                 tr
                   th Match
                   th Score
-                +matchrow('Dexter','Thomas')
-                +matchrow('Andrea','James')
-                +matchrow('Drew','Mohammad')
-                +matchrow('Dexter','Thomas')
-                +matchrow('Andrea','James')
-                +matchrow('Drew','Mohammad')
-                
+                each m in matches
+                  +matchrow(m.home, m.away)
           #standings.col-md-6
               h2 Standings
               table.table.table-striped
