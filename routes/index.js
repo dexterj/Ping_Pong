@@ -68,10 +68,9 @@ exports.create_tournament = function(req, res){
 
 exports.show_tournament = function(req, res){
   whenFound = function (err, t){
-        console.log(t);
         res.render('tourney', t);
     };
     // callback
-    models.Tournament.find({"slug": req.params.tourney}, whenFound);
+    models.Tournament.findOne({"slug": req.params.slug}, whenFound);
 
 };

@@ -2,7 +2,16 @@ extends layout
 mixin matchrow(playerone, playertwo)
   tr
     td: a #{playerone} VS #{playertwo}
-    td
+    td tbd
+mixin standingsrow(player, order)
+  tr
+    td= order+1
+    td= player.name
+    td= player.record.matches.won
+    td= player.record.matches.lost
+    td= player.record.sets.won
+    td= player.record.sets.lost
+    
 
 block content
     .container
@@ -27,19 +36,7 @@ block content
                   th Matches Lost
                   th Sets Won
                   th Sets Lost
-                tr
-                  td 1
-                  td Dexter
-                  td 6
-                  td 2
-                  td 12
-                  td 0
-                tr
-                  td 1
-                  td Andrea
-                  td 6
-                  td 2
-                  td 11
-                  td 1
-                  
+                each p,o in players
+                    +standingsrow(p,o)
+                    
                 
