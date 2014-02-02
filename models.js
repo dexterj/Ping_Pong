@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://deviowa.com/pingpong');
  
 var db = mongoose.connection;
 var Schema = mongoose.Schema;

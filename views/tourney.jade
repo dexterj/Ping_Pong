@@ -2,7 +2,7 @@ extends layout
 mixin matchrow(playerone, playertwo)
   tr
     td: a #{playerone} VS #{playertwo}
-    td tbd
+    td: button.start.btn.btn-primary(data-toggle="modal", data-target=".bs-modal-lg") Start Match 
 mixin standingsrow(player, order)
   tr
     td= order+1
@@ -38,5 +38,28 @@ block content
                   th Sets Lost
                 each p,o in players
                     +standingsrow(p,o)
-                    
-                
+          
+          .modal.fade.bs-modal-lg
+              .modal-dialog.modal-lg
+                .modal-content
+                  .match
+                    .row
+                      #home.col-md-6.col-xs-6
+                        .home_text: h1 Home : 
+                            span#home_score 0
+                        .home_scores
+                          h2.home.set1 0
+                          h2.home.set2 -
+                          h2.home.set3 -
+                      #away.col-md-6.col-xs-6
+                        .away_text: h1 Away : 
+                            span#away_score 0
+                        .away_scores
+                          h2.away.set1 0
+                          h2.away.set2 -
+                          h2.away.set3 -
+                          
+  block scripts
+    script(src="//code.jquery.com/jquery-1.10.2.min.js")
+    script(src="/js/bootstrap.js")
+    script(src="/js/tourney.js")

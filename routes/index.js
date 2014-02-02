@@ -74,3 +74,5 @@ exports.show_tournament = function(req, res){
     models.Tournament.findOne({"slug": req.params.slug}, whenFound);
 
 };
+
+

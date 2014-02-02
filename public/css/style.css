@@ -15,3 +15,40 @@ a {
 #standings{
     
 }
+
+
+.match{
+  padding: 20px;
+  background: #6c81c4;
+  color:#FFF;
+  border: solid 5px #FFF;
+}
+
+#home{
+  border-right: dashed 3px #FFF;
+  height: 300px;
+}
+#away{
+  height:300px;
+}
+
+.home_text{
+  font-size:80px;
+  -webkit-transform: rotate(90deg);
+  position: absolute;
+  top: 120px;
+  left: -40px;
+}
+.home_scores h2, .away_scores h2{
+  text-align:center;
+  font-size: 60px;
+}
+
+.away_text{
+  font-size:80px;
+  -webkit-transform: rotate(-90deg);
+  position: absolute;
+  top: 120px;
+  right: -40px;
+}
+

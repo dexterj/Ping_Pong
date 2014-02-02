@@ -10,7 +10,6 @@ block content
     each item in tournamentlist
       li 
               a(href='tourney/'+item.slug) #{item.name}
-  script(src="main.js")
   
   #popup
     form(action="/api/tournament" method="post")
@@ -21,4 +20,7 @@ block content
         p
           input(type="submit", value="submit")
         
-      
+block scripts 
+  script(src="//code.jquery.com/jquery-1.10.2.min.js")
+  script(src="/js/bootstrap.js")
+  script(src="main.js")
