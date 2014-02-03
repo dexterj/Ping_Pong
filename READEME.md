@@ -1,1 +1,1 @@
-Ping Pont Tournaments
+Ping Pong Tournaments

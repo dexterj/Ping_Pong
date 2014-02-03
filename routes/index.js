@@ -34,7 +34,6 @@ function parsePlayerList(textBoxString){
   for (var i=0; i<player_names.length; i++){
     var player = new models.Player();
     player.name = player_names[i];
-    player.save()
     players.push(player);
   }
 
