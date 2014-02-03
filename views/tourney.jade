@@ -1,8 +1,11 @@
 extends layout
-mixin matchrow(playerone, playertwo)
+mixin matchrow(match)
   tr
-    td: a #{playerone} VS #{playertwo}
-    td: button.start.btn.btn-primary(data-toggle="modal", data-target=".bs-modal-lg") Start Match 
+    td: a #{match.home} VS #{match.away}
+    
+    td 
+        span #{match.sets}
+        button.start.btn.btn-primary Start Match 
 mixin standingsrow(player, order)
   tr
     td= order+1
@@ -15,7 +18,7 @@ mixin standingsrow(player, order)
 
 block content
     .container
-        h1= Tournament
+        h1= name
         p Welcome to the #{name}
         .row
           #matches.col-md-6
@@ -25,7 +28,7 @@ block content
                   th Match
                   th Score
                 each m in matches
-                  +matchrow(m.home, m.away)
+                  +matchrow(m)
           #standings.col-md-6
               h2 Standings
               table.table.table-striped
@@ -58,6 +61,9 @@ block content
                           h2.away.set1 0
                           h2.away.set2 -
                           h2.away.set3 -
+                          
+        script
+            |   window.SLUG = '#{slug}'
                           
   block scripts
     script(src="//code.jquery.com/jquery-1.10.2.min.js")

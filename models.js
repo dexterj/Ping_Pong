@@ -19,10 +19,8 @@ var playerSchema = new Schema({
 });
  
 var setSchema = new Schema({
-    number: Number,
-    home: String,
-    away: String,
-    score:[Number, Number]
+    home: Number,
+    away: Number
 });
  
 var matchSchema = new Schema({

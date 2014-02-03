@@ -65,6 +65,22 @@ exports.create_tournament = function(req, res){
     res.redirect('/');
 };
 
+exports.save_match = function(req, res){
+     whenFound = function (err, t){
+     for(var i=0; i<t.matches.length; i++){
+        var m = t.matches[i];
+         if(m.home == req.body.home && m.away == req.body.away){
+            m.sets=req.body.sets;
+            t.save();
+            res.send('Okay');
+            return
+         }
+     }
+     };
+    // callback
+    models.Tournament.findOne({"slug": req.body.slug}, whenFound);
+};
+
 exports.show_tournament = function(req, res){
   whenFound = function (err, t){
         res.render('tourney', t);

@@ -32,6 +32,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.post('/api/tournament', routes.create_tournament);
 app.get('/tourney/:slug', routes.show_tournament);
+app.post('/foobar', routes.save_match);
 //app.get('/api/tournament', routes.list_tournament);
 //app.get('/api/tournament/:id', routes.get_tournament);
 
