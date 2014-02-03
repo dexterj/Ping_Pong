@@ -59,3 +59,16 @@ a {
   -o-user-select: none;
 }
 
+.winnerwrapper {
+    text-align: center;
+    margin: auto;
+    background-color: #53b945;
+    color: #ffffff;
+}
+.winnerwrapper h1 {
+    font-weight: bold;
+    font-size: 3em;
+    font-family: 'Revalia', cursive;
+}
+
+

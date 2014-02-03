@@ -7,7 +7,7 @@ mixin matchrow(match)
         if match.sets.length
             span #{match.get("winner")}
         else
-            button.start.btn.btn-primary Start Match 
+            button.start.btn.btn-primary(data-home=match.home,  data-away=match.away) Start Match 
 mixin standingsrow(player, order)
   tr
     td= order+1
@@ -44,20 +44,29 @@ block content
                 each p,o in players
                     +standingsrow(p,o)
           
-          .modal.fade.bs-modal-lg
+          #endmatch.modal.fade.bs-modal-lg
+              .modal-dialog.modal-lg
+                .modal-content
+                    .row: .col-md-12.winnerwrapper
+                        h1#winner Winner
+                        img(src="/machoman.png" width="100%")
+          
+          #scoreboard.modal.fade.bs-modal-lg
               .modal-dialog.modal-lg
                 .modal-content
                   .match
                     .row
                       #home.col-md-6.col-xs-6
-                        .home_text: h1 Home : 
+                        .home_text: h1 
+                            span#hometext Home : 
                             span#home_score 0
                         .home_scores
                           h2.home.set1 0
                           h2.home.set2 -
                           h2.home.set3 -
                       #away.col-md-6.col-xs-6
-                        .away_text: h1 Away : 
+                        .away_text: h1 
+                            span#awaytext Away : 
                             span#away_score 0
                         .away_scores
                           h2.away.set1 0
