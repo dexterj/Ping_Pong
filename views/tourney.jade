@@ -4,8 +4,10 @@ mixin matchrow(match)
     td: a #{match.home} VS #{match.away}
     
     td 
-        span #{match.sets}
-        button.start.btn.btn-primary Start Match 
+        if match.sets.length
+            span #{match.winner}
+        else
+            button.start.btn.btn-primary Start Match 
 mixin standingsrow(player, order)
   tr
     td= order+1

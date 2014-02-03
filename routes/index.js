@@ -83,7 +83,9 @@ exports.save_match = function(req, res){
 
 exports.show_tournament = function(req, res){
   whenFound = function (err, t){
-        res.render('tourney', t);
+      for (var i = 0; i<t.matches.length; i++)
+        console.log("winner", t.matches[i].winner);  
+      res.render('tourney', t);
     };
     // callback
     models.Tournament.findOne({"slug": req.params.slug}, whenFound);
