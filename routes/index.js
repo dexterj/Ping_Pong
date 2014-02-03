@@ -83,8 +83,6 @@ exports.save_match = function(req, res){
 
 exports.show_tournament = function(req, res){
   whenFound = function (err, t){
-      for (var i = 0; i<t.matches.length; i++)
-        console.log("winner", t.matches[i].winner);  
       res.render('tourney', t);
     };
     // callback

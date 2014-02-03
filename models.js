@@ -37,7 +37,6 @@ var tournamentSchema = new Schema({
 });
 
 matchSchema.virtual('winner').get(function () {
-    return "something";
     var setsHomeWon = 0;
     var homeWinsSet = function(set){
         return set.home >= 11 && set.home >= set.away + 2;
