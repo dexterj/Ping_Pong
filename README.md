@@ -7,7 +7,7 @@ You will need nodejs and nom installed on your system already (see https://githu
 
 1. clone the repository
 ```
-git clone https://github.com/deviowa/pong.git
+git clone https://github.com/deviowa/Ping_Pong.git
 ```
 
 2. install dependencies using nom install
