@@ -1,14 +1,25 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background:url('../background.jpg');
+  background-size: cover;
+  background-attachment:fixed;
 }
 
 a {
   color: #00B7FF;
   cursor: pointer;
 }
+tr {
+  background-color: #fff;
+}
+
+.container{
+  background-color:rgba(255,255,255,.75);
+}
 #popup {
     display:none;
+    margin-top:10px;
 }
 #matches{
 
@@ -16,7 +27,21 @@ a {
 #standings{
     
 }
-
+.tourney{
+  text-align: center;
+}
+.tourney ul{
+  margin: 0;
+  padding: 0;
+}
+.tourney ul li{
+  list-style: none;
+}
+.tourney ul li a{
+  display:block;
+  font-size: 25px;
+  margin-top: 10px;
+}
 
 .match{
   padding: 20px;
