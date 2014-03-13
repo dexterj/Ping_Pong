@@ -29,6 +29,7 @@ var tournamentSchema = new Schema({
 tournamentSchema.methods.getPlayerWinnings = function(p) {
     var matchesWon = 0;
     for(var i = 0; i < this.matches.length; i++){
+        if (this.matches[i].sets.length == 0){continue}
        //console.log(this.matches[i].winner == p, p, this.matches[i].get("winner"));
        if (this.matches[i].get("winner") == p) {
         matchesWon++
@@ -40,6 +41,7 @@ tournamentSchema.methods.getPlayerWinnings = function(p) {
 tournamentSchema.methods.getPlayerLosings = function(p) {
     var matchesLost = 0;
     for(var i = 0; i < this.matches.length; i++){
+       if (this.matches[i].sets.length == 0){continue}
        if (this.matches[i].get("winner") != p) {
         if (this.matches[i].home == p || this.matches[i].away == p)
         matchesLost++
@@ -86,6 +88,7 @@ var homeWinsSet = function(set){
 
 var matchSetsWonBy = function(m, p) {
     var setsWon = 0;
+    if (m.sets.length == 0){return(0)}
     if (m.home == p){
         for(var i=0; i<m.sets.length; i++)
             if (homeWinsSet(m.sets[i])){
@@ -103,6 +106,7 @@ var matchSetsWonBy = function(m, p) {
 
 var matchSetsLostBy = function(m, p) {
     var setsLost = 0;
+    if (m.sets.length == 0){return(0)}
     if (m.home == p){
         for(var i=0; i<m.sets.length; i++)
             if (!homeWinsSet(m.sets[i])){
