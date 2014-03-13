@@ -40,6 +40,7 @@ var victoryAway = function () {
     $('#scoreboard').modal("hide");
     $('#winner').text(matchAway + " wins!");
     $("#endmatch").modal("show");
+    new Audio("/machoman.wav").play();
 }
 
 var startNextSet = function () {
@@ -116,10 +117,51 @@ var pointAway = function () {
     updateScore();
 };
 
+var showPastGame = function () {
+    var homeSetsWon = function(m) {
+        var homeSets = 0;
+        for(var i = 0; i < m.sets.length; i++){
+            if (m.sets[i].home > m.sets[i].away)
+                homeSets++
+        }
+        return(homeSets);
+    }
+    var awaySetsWon = function(m) {
+        var awaySets = 0;
+        for(var i = 0; i < m.sets.length; i++){
+            if (m.sets[i].home < m.sets[i].away)
+                awaySets++
+        }
+        return(awaySets);
+    }
+    var matchid = $(this).attr("data-matchid");
+    var url = "/api/match/"+window.SLUG+"/"+matchid;
+    $.getJSON(url, function(match){
+        $("#pastHomeText").text(match.home+": ")
+        $("#pastAwayText").text(match.away+": ")
+        $(".home.set1").text(match.sets[0].home);
+        $(".away.set1").text(match.sets[0].away);
+        $(".home.set2").text(match.sets[1].home);
+        $(".away.set2").text(match.sets[1].away);
+        if (match.sets.length > 2){
+            $(".home.set3").text(match.sets[2].home);
+            $(".away.set3").text(match.sets[2].away);
+        }else{
+            $(".home.set3").text("-");
+            $(".away.set3").text("-");
+        }
+        $("#pastHome_score").text(homeSetsWon(match));
+        $("#pastAway_score").text(awaySetsWon(match));
+        $("#pastScore").modal("show");
+        console.log(match);
+    })
+    
+}
+
 $("#home").on("click", pointHome);
-
-
 $("#away").on("click", pointAway);
+$(".pastGame").on("click", showPastGame)
+
 
 WebFontConfig = {
     google: {
@@ -135,3 +177,10 @@ WebFontConfig = {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
 })();
+
+$('#endmatch').on('hidden.bs.modal', function(e) {
+    location.reload();
+});
+
+
+

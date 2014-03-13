@@ -1,7 +1,7 @@
 extends layout
 mixin matchrow(match)
   tr
-    td: a #{match.home} VS #{match.away}
+    td: a.pastGame(data-matchid="#{match._id}") #{match.home} VS #{match.away}
     
     td 
         if match.sets.length
@@ -12,16 +12,16 @@ mixin standingsrow(player, order)
   tr
     td= order+1
     td= player.name
-    td= player.record.matches.won
-    td= player.record.matches.lost
-    td= player.record.sets.won
-    td= player.record.sets.lost
+    td= t.getPlayerWinnings(player.name)
+    td= t.getPlayerLosings(player.name)
+    td= t.getPlayerSetsWon(player.name)
+    td= t.getPlayerSetsLost(player.name)
     
 
 block content
     .container
         h1= name
-        p Welcome to the #{name}
+        p Welcome to the #{t.name}
         .row
           #matches.col-md-6
               h2 Matches
@@ -29,7 +29,7 @@ block content
                 tr
                   th Match
                   th Score
-                each m in matches
+                each m in t.matches
                   +matchrow(m)
           #standings.col-md-6
               h2 Standings
@@ -41,7 +41,7 @@ block content
                   th Matches Lost
                   th Sets Won
                   th Sets Lost
-                each p,o in players
+                each p,o in t.getPlayerRank()
                     +standingsrow(p,o)
           
           #endmatch.modal.fade.bs-modal-lg
@@ -73,9 +73,31 @@ block content
                           h2.away.set1 0
                           h2.away.set2 -
                           h2.away.set3 -
+
+          #pastScore.modal.fade.bs-modal-lg
+              .modal-dialog.modal-lg
+                .modal-content
+                  .match
+                    .row
+                      #pastHome.col-md-6.col-xs-6
+                        .home_text: h1 
+                            span#pastHomeText Home : 
+                            span#pastHome_score 0
+                        .home_scores
+                          h2.home.set1 0
+                          h2.home.set2 -
+                          h2.home.set3 -
+                      #pastAway.col-md-6.col-xs-6
+                        .away_text: h1 
+                            span#pastAwayText Away : 
+                            span#pastAway_score 0
+                        .away_scores
+                          h2.away.set1 0
+                          h2.away.set2 -
+                          h2.away.set3 -
                           
         script
-            |   window.SLUG = '#{slug}'
+            |   window.SLUG = '#{t.slug}'
                           
   block scripts
     script(src="//code.jquery.com/jquery-1.10.2.min.js")

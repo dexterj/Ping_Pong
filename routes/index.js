@@ -14,6 +14,18 @@ exports.index = function(req, res){
     models.Tournament.find (whenFound);  
 };
 
+exports.previous_match = function(req, res){
+  whenFound = function (err, t){
+      for(var i = 0; i < t.matches.length; i++){
+        if (t.matches[i]._id == req.params.id) {
+          res.send(t.matches[i]);
+          return
+        }
+      }
+  };
+  // callback
+  models.Tournament.findOne({"slug": req.params.slug}, whenFound);
+}
 
 function parsePlayerList(textBoxString){
   var player_names = [];
@@ -83,7 +95,7 @@ exports.save_match = function(req, res){
 
 exports.show_tournament = function(req, res){
   whenFound = function (err, t){
-      res.render('tourney', t);
+      res.render('tourney', {t:t});
     };
     // callback
     models.Tournament.findOne({"slug": req.params.slug}, whenFound);
